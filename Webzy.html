@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatchur Rosi - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .animate-slide-up-delay {
+            animation: slideUp 0.8s ease-out 0.5s both;
+        }
+
+        .portfolio-description {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+        }
+
+        .portfolio-card.expanded .portfolio-description {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            max-height: 300px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-blue-50">
+    
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                    FR
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#profile" class="nav-link capitalize font-medium text-gray-600 hover:text-blue-600 transition-colors duration-300">Profile</a>
+                    <a href="#portfolio" class="nav-link capitalize font-medium text-gray-600 hover:text-blue-600 transition-colors duration-300">Portfolio</a>
+                    <a href="#experience" class="nav-link capitalize font-medium text-gray-600 hover:text-blue-600 transition-colors duration-300">Experience</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2" id="mobile-menu-btn">
+                    <i class="fas fa-bars w-6 h-6 text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu md:hidden bg-white border-t" id="mobile-menu">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#profile" class="block w-full text-left px-4 py-2 capitalize font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Profile</a>
+                <a href="#portfolio" class="block w-full text-left px-4 py-2 capitalize font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Portfolio</a>
+                <a href="#experience" class="block w-full text-left px-4 py-2 capitalize font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">Experience</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero / Profile Section -->
+    <section id="profile" class="hero-bg min-h-screen flex items-center justify-center relative pt-16">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-900/70 to-blue-600/70"></div>
+        
+        <div class="relative z-10 text-center px-4 animate-fade-in">
+            <div class="mb-8 inline-block">
+                <img src="The Wolf Of Wall Street (1).jpeg" 
+                     alt="Profile" 
+                     class="w-40 h-40 rounded-full border-4 border-white shadow-2xl object-cover mx-auto transform hover:scale-105 transition-transform duration-300">
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 animate-slide-up">
+                Hi, I'm Fatchur Rosi
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto leading-relaxed animate-slide-up-delay">
+                I'm a fullstack developer student in SMK TELKOM MALANG. 
+                My experience is developing websites.
+            </p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                My Portfolio
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-card group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop" 
+                                 alt="E-Commerce Platform" 
+                                 class="w-full h-48 md:h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">
+                                E-Commerce Platform
+                            </h3>
+                            
+                            <div class="portfolio-description">
+                                <p class="text-gray-600 text-sm md:text-base leading-relaxed pt-2 border-t border-gray-200">
+                                    A full-featured e-commerce platform built with React and Node.js. Includes shopping cart, payment integration, and admin dashboard for product management.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-card group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop" 
+                                 alt="Task Management App" 
+                                 class="w-full h-48 md:h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">
+                                Task Management App
+                            </h3>
+                            
+                            <div class="portfolio-description">
+                                <p class="text-gray-600 text-sm md:text-base leading-relaxed pt-2 border-t border-gray-200">
+                                    Modern task management application with drag-and-drop functionality, real-time updates, and team collaboration features using Next.js and Firebase.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-card group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop" 
+                                 alt="Weather Dashboard" 
+                                 class="w-full h-48 md:h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">
+                                Weather Dashboard
+                            </h3>
+                            
+                            <div class="portfolio-description">
+                                <p class="text-gray-600 text-sm md:text-base leading-relaxed pt-2 border-t border-gray-200">
+                                    Interactive weather dashboard displaying real-time weather data with beautiful visualizations. Integrates multiple weather APIs for accurate forecasts.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-card group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop" 
+                                 alt="Social Media Clone" 
+                                 class="w-full h-48 md:h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">
+                                Social Media Clone
+                            </h3>
+                            
+                            <div class="portfolio-description">
+                                <p class="text-gray-600 text-sm md:text-base leading-relaxed pt-2 border-t border-gray-200">
+                                    Social networking platform featuring user profiles, posts, likes, comments, and real-time messaging. Built with MERN stack and Socket.io.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-card group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" 
+                                 alt="Portfolio CMS" 
+                                 class="w-full h-48 md:h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">
+                                Portfolio CMS
+                            </h3>
+                            
+                            <div class="portfolio-description">
+                                <p class="text-gray-600 text-sm md:text-base leading-relaxed pt-2 border-t border-gray-200">
+                                    Content management system designed for creative professionals. Features drag-and-drop page builder, media library, and SEO optimization tools.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-card group cursor-pointer" onclick="toggleCard(this)">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <div class="relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop" 
+                                 alt="Learning Platform" 
+                                 class="w-full h-48 md:h-64 object-cover transform transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        
+                        <div class="p-4 md:p-6">
+                            <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">
+                                Learning Platform
+                            </h3>
+                            
+                            <div class="portfolio-description">
+                                <p class="text-gray-600 text-sm md:text-base leading-relaxed pt-2 border-t border-gray-200">
+                                    Online learning platform with video courses, quizzes, progress tracking, and certification system. Includes both student and instructor interfaces.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                Experience
+            </h2>
+            
+            <div class="space-y-8">
+                <div class="border-l-4 border-blue-600 pl-6 py-4 hover:bg-blue-50 transition-colors duration-300 rounded-r-lg">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">
+                        Frontend Development
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Experienced in building responsive and interactive user interfaces using modern frameworks 
+                        like React, Next.js, and Vue.js. Proficient in creating pixel-perfect designs with Tailwind CSS 
+                        and implementing smooth animations for enhanced user experience.
+                    </p>
+                </div>
+                
+                <div class="border-l-4 border-blue-600 pl-6 py-4 hover:bg-blue-50 transition-colors duration-300 rounded-r-lg">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">
+                        Backend Development
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Skilled in developing RESTful APIs and server-side applications using Node.js, Express, and 
+                        databases like MongoDB and PostgreSQL. Experience with authentication, authorization, and 
+                        building scalable backend architectures.
+                    </p>
+                </div>
+                
+                <div class="border-l-4 border-blue-600 pl-6 py-4 hover:bg-blue-50 transition-colors duration-300 rounded-r-lg">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">
+                        Full Stack Projects
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Successfully completed multiple full-stack projects including e-commerce platforms, 
+                        social media applications, and content management systems. Strong understanding of 
+                        the complete web development lifecycle from design to deployment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Get in Touch</h2>
+            
+            <div class="flex justify-center space-x-6 md:space-x-8">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="group">
+                    <div class="bg-white/10 p-4 rounded-full backdrop-blur-sm transform transition-all duration-300 hover:bg-white/20 hover:scale-110 hover:-translate-y-2">
+                        <i class="fab fa-instagram text-2xl md:text-3xl"></i>
+                    </div>
+                    <p class="text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Instagram</p>
+                </a>
+                
+                <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="group">
+                    <div class="bg-white/10 p-4 rounded-full backdrop-blur-sm transform transition-all duration-300 hover:bg-white/20 hover:scale-110 hover:-translate-y-2">
+                        <i class="fab fa-whatsapp text-2xl md:text-3xl"></i>
+                    </div>
+                    <p class="text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity">WhatsApp</p>
+                </a>
+                
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="group">
+                    <div class="bg-white/10 p-4 rounded-full backdrop-blur-sm transform transition-all duration-300 hover:bg-white/20 hover:scale-110 hover:-translate-y-2">
+                        <i class="fab fa-tiktok text-2xl md:text-3xl"></i>
+                    </div>
+                    <p class="text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity">TikTok</p>
+                </a>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-white/20">
+                <p class="text-blue-200">
+                    © 2024 Fatchur Rosi. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            if (mobileMenu.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Portfolio Card Toggle
+        function toggleCard(card) {
+            // Close all other cards
+            document.querySelectorAll('.portfolio-card').forEach(c => {
+                if (c !== card) {
+                    c.classList.remove('expanded');
+                }
+            });
+            
+            // Toggle current card
+            card.classList.toggle('expanded');
+        }
+
+        // Active Navigation Link
+        window.addEventListener('scroll', () => {
+            const sections = ['profile', 'portfolio', 'experience'];
+            const scrollPosition = window.scrollY + 100;
+
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const { offsetTop, offsetHeight } = section;
+                    const link = document.querySelector(`a[href="#${sectionId}"]`);
+                    
+                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('text-blue-600'));
+                        if (link) link.classList.add('text-blue-600');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
